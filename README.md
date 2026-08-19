@@ -8,20 +8,20 @@ Instalar as dependências do sistema:
 Abra o terminal do Linux e rode:
 
 # Bash
-sudo apt update
-sudo apt install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0-dev
+    sudo apt update
+    sudo apt install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0-dev
 Baixar o SDK do ESP-IDF (Versão v5.2.2):
 
 # Bash
-mkdir -p ~/esp
-cd ~/esp
-git clone -b v5.2.2 --recursive https://github.com/espressif/esp-idf.git
+    mkdir -p ~/esp
+    cd ~/esp
+    git clone -b v5.2.2 --recursive https://github.com/espressif/esp-idf.git
 Executar o instalador das ferramentas:
 
-Bash
-cd ~/esp/esp-idf
-./install.sh esp32
-Passo 2: Preparar o VS Code e Extensões
+# Bash
+    cd ~/esp/esp-idf
+    ./install.sh esp32
+# Passo 2: Preparar o VS Code e Extensões
 Abra o VS Code.
 
 Abra a aba de Extensões (Ctrl + Shift + X).
@@ -41,8 +41,8 @@ Substitua o conteúdo do arquivo por:
 
 # JSON
 
-{
-    "configurations": [
+    {
+     "configurations": [
         {
             "name": "ESP-IDF",
             "includePath": [
@@ -55,21 +55,22 @@ Substitua o conteúdo do arquivo por:
         }
     ],
     "version": 4
-}
+     }
 Salve o arquivo (Ctrl + S).
 
 Passo 4: Escrever o Código Mínimo (main/main.c)
 Abra o arquivo main/main.c.
 
+# Código Fonte teste BLINK
 Cole o código para piscar o LED da placa (GPIO 2):
 
-C
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
+# C
+    #include "freertos/FreeRTOS.h"
+    #include "freertos/task.h"
+    #include "driver/gpio.h"
 
-void app_main(void)
-{
+    void app_main(void)
+    {
     // Configura o pino 2 (LED embutido) como saída digital
     gpio_set_direction(2, GPIO_MODE_OUTPUT);
 
@@ -79,7 +80,8 @@ void app_main(void)
         gpio_set_level(2, 0);           // Desliga o LED
         vTaskDelay(pdMS_TO_TICKS(500));  // Aguarda 500ms
     }
-}
+    }
+    
 Salve o arquivo (Ctrl + S).
 
 Passo 5: Configurar os Atalhos no ~/.bashrc
@@ -88,13 +90,13 @@ Para automatizar o carregamento do ambiente Python e os comandos de gravação e
 Abra o arquivo no nano:
 
 # Bash
-nano ~/.bashrc
+    nano ~/.bashrc
 Vá até a última linha do arquivo e cole os atalhos:
 
 # Bash
 # Atalhos para ESP-IDF
-alias gravar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash'
-alias monitorar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash monitor'
+    alias gravar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash'
+    alias monitorar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash monitor'
 Salve e saia do nano:
 
 Aperte Ctrl + O e confirme com Enter.
@@ -104,7 +106,7 @@ Aperte Ctrl + X.
 Recarregue as configurações do terminal:
 
 # Bash
-source ~/.bashrc
+    source ~/.bashrc
 Passo 6: Gravando e Usando no Dia a Dia
 Para gravar na placa:
 
