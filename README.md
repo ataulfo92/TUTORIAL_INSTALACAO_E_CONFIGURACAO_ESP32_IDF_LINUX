@@ -2,17 +2,17 @@
 Manual de como fazer a instalação e configuração do ESP32 IDF no ambiente linux. Embora sistemas baseados em Unix tenham complexidades diversas, dependendo do passo a passo pode demorar horas até mesmo utilizando IA.
 
 
-🛠️ Guia Definitivo: Instalação e Configuração do ESP-IDF no Linux + VS Code
+# Guia Definitivo: Instalação e Configuração do ESP-IDF no Linux + VS Code
 Passo 1: Instalação do ESP-IDF no Linux
 Instalar as dependências do sistema:
 Abra o terminal do Linux e rode:
 
-Bash
+# Bash
 sudo apt update
 sudo apt install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0-dev
 Baixar o SDK do ESP-IDF (Versão v5.2.2):
 
-Bash
+# Bash
 mkdir -p ~/esp
 cd ~/esp
 git clone -b v5.2.2 --recursive https://github.com/espressif/esp-idf.git
@@ -39,7 +39,8 @@ No painel de arquivos, abra .vscode/c_cpp_properties.json.
 
 Substitua o conteúdo do arquivo por:
 
-JSON
+# JSON
+
 {
     "configurations": [
         {
@@ -86,11 +87,11 @@ Para automatizar o carregamento do ambiente Python e os comandos de gravação e
 
 Abra o arquivo no nano:
 
-Bash
+# Bash
 nano ~/.bashrc
 Vá até a última linha do arquivo e cole os atalhos:
 
-Bash
+# Bash
 # Atalhos para ESP-IDF
 alias gravar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash'
 alias monitorar='. $HOME/esp/esp-idf/export.sh && idf.py -p /dev/ttyUSB0 flash monitor'
@@ -102,14 +103,14 @@ Aperte Ctrl + X.
 
 Recarregue as configurações do terminal:
 
-Bash
+# Bash
 source ~/.bashrc
 Passo 6: Gravando e Usando no Dia a Dia
 Para gravar na placa:
 
 Digite apenas no terminal:
 
-Bash
+# Bash
 gravar
 Para gravar e abrir o monitor serial ao mesmo tempo:
 
